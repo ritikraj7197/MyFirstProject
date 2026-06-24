@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A beautiful, modern, colorful glassmorphic calculator website with keyboard support, theme toggles, and computation history.">
+  <title>Aura Calc - Modern Colorful Glassmorphism Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+  <div class="calculator-wrapper">
+    <main class="calculator">
+      <!-- Calculator Header -->
+      <header class="calc-header">
+        <div class="brand">
+          <span class="brand-dot"></span>
+          <span>Aura Calc</span>
+        </div>
+        <div class="header-controls">
+          <!-- History Toggle Button -->
+          <button class="icon-btn" id="history-toggle-btn" aria-label="View history" title="View History">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </button>
+          <!-- Theme Toggle Button -->
+          <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle theme" title="Toggle Theme">
+            <!-- Sun Icon (active in dark theme to switch to light) -->
+            <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Calculator Display -->
+      <section class="calc-display" aria-label="Calculator display screen">
+        <div class="display-history" id="display-history" aria-live="polite"></div>
+        <div class="display-current" id="display-current" aria-live="polite" tabIndex="0">0</div>
+      </section>
+
+      <!-- Calculator Grid Buttons -->
+      <section class="calc-grid" aria-label="Calculator keys">
+        <!-- Row 1 -->
+        <button class="btn btn-fn" data-action="clear" aria-label="Clear All">C</button>
+        <button class="btn btn-fn" data-action="delete" aria-label="Delete last digit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/>
+          </svg>
+        </button>
+        <button class="btn btn-fn" data-action="percent" aria-label="Percentage">%</button>
+        <button class="btn btn-op" data-operator="/" aria-label="Divide">÷</button>
+
+        <!-- Row 2 -->
+        <button class="btn btn-num" data-number="7">7</button>
+        <button class="btn btn-num" data-number="8">8</button>
+        <button class="btn btn-num" data-number="9">9</button>
+        <button class="btn btn-op" data-operator="*" aria-label="Multiply">×</button>
+
+        <!-- Row 3 -->
+        <button class="btn btn-num" data-number="4">4</button>
+        <button class="btn btn-num" data-number="5">5</button>
+        <button class="btn btn-num" data-number="6">6</button>
+        <button class="btn btn-op" data-operator="-" aria-label="Subtract">−</button>
+
+        <!-- Row 4 -->
+        <button class="btn btn-num" data-number="1">1</button>
+        <button class="btn btn-num" data-number="2">2</button>
+        <button class="btn btn-num" data-number="3">3</button>
+        <button class="btn btn-op" data-operator="+" aria-label="Add">+</button>
+
+        <!-- Row 5 -->
+        <button class="btn btn-num" data-action="toggle-sign" aria-label="Toggle positive or negative" title="Toggle Positive/Negative">±</button>
+        <button class="btn btn-num" data-number="0">0</button>
+        <button class="btn btn-num" data-decimal="." aria-label="Decimal point">.</button>
+        <button class="btn btn-eq" data-action="calculate" aria-label="Equals">=</button>
+      </section>
+
+      <!-- Sliding History Drawer -->
+      <section class="history-panel" id="history-panel" aria-label="Calculation history panel">
+        <div class="history-header">
+          <span class="history-title">History</span>
+          <button class="icon-btn" id="history-close-btn" aria-label="Close history">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <div class="history-list" id="history-list">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="history-footer">
+          <button class="btn btn-fn double-width" id="history-clear-btn" aria-label="Clear calculations history">Clear</button>
+          <button class="btn btn-num double-width" id="history-back-btn" aria-label="Back to calculator">Close</button>
+        </div>
+      </section>
+    </main>
+    
+    <div class="helper-text">
+      Press physical keys for calculation. Enable dark/light themes above.
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
